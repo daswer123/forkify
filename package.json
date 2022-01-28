@@ -1,0 +1,31 @@
+{
+  "name": "forkify",
+  "version": "1.0.0",
+  "description": "final course project",
+  "source": "src/index.html",
+  "scripts": {
+    "dev": "parcel --open",
+    "build": "parcel build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daswer123/forkify.git"
+  },
+  "keywords": [
+    "course",
+    "final-project",
+    "pet-project"
+  ],
+  "author": "Danil Boldyrev (daswer123)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/daswer123/forkify/issues"
+  },
+  "homepage": "https://github.com/daswer123/forkify#readme",
+  "dependencies": {
+    "parcel": "^2.2.1"
+  },
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.2.1"
+  }
+}
