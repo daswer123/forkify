@@ -22,10 +22,13 @@
     "url": "https://github.com/daswer123/forkify/issues"
   },
   "homepage": "https://github.com/daswer123/forkify#readme",
+  "browserslist": "> 0.25%, not dead",
   "dependencies": {
     "parcel": "^2.2.1"
   },
   "devDependencies": {
-    "@parcel/transformer-sass": "^2.2.1"
+    "@babel/preset-env": "^7.16.11",
+    "@parcel/transformer-sass": "^2.2.1",
+    "eslint": "^8.7.0"
   }
 }
