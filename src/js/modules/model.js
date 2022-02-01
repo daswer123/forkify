@@ -8,6 +8,8 @@ const state = {
   page: 0,
 };
 
+console.log(state);
+
 // Загрузка рецепта из АПИ
 const loadRecipe = async (id) => {
   try {
@@ -17,6 +19,8 @@ const loadRecipe = async (id) => {
     const { recipe } = (await getJSON(url)).data;
 
     state.recipe = recipe;
+
+    // if (!state.bookmarks) return;
 
     if (state.bookmarks.some((el) => el.id === recipe.id)) {
       // Проверяем есть ли в закладках этот рецепт, если есть ставим ему свойство bookmarked

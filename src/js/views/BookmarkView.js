@@ -2,11 +2,12 @@ import { API_KEY, imageURL } from "../config";
 
 class BookmarkView {
   constructor() {
+    this.data = [];
     this.parentEl = document.querySelector(".bookmarks__list");
     this.errorMsg = `<div class="message">
     <div>
       <svg>
-        <use href="${imageURL}#icon-smile"></use>
+        <use href="${imageURL.pathname}#icon-smile"></use>
       </svg>
     </div>
     <p>
@@ -62,7 +63,6 @@ class BookmarkView {
   }
 
   uploadBookmarsFromLocalStorage() {
-    console.log(this.data);
     window.localStorage.setItem("bookmarks", JSON.stringify(this.data));
   }
 

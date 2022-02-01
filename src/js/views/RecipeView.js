@@ -122,7 +122,7 @@ class RecipeView extends App {
     >
       <span>Directions</span>
       <svg class="search__icon">
-        <use href="img/icons.svg#icon-arrow-right"></use>
+        <use href="${imageURL.pathname}#icon-arrow-right"></use>
       </svg>
     </a>
     </div>`;
@@ -167,7 +167,7 @@ class RecipeView extends App {
     <div class="error">
       <div>
         <svg>
-          <use href="${imageURL}}#icon-smile"></use>
+          <use href="${imageURL.pathname}}#icon-smile"></use>
         </svg>
       </div>
       <p>${success}</p>

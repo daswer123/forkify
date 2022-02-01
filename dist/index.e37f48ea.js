@@ -542,6 +542,7 @@ const controllRecipe = async ()=>{
         _resultViewJsDefault.default.update(_modelJs.CreateSeparatedArr());
         await _modelJs.loadRecipe(id);
         // Как только все загрузилось рендерим
+        console.log(_modelJs.state.recipe);
         _recipeViewJsDefault.default.render(_modelJs.state.recipe);
     } catch (err) {
         console.log(err);

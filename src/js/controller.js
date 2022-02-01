@@ -26,6 +26,7 @@ const controllRecipe = async () => {
 
     await loadRecipe(id);
     // Как только все загрузилось рендерим
+    console.log(state.recipe);
     RecipeView.render(state.recipe);
   } catch (err) {
     console.log(err);
@@ -109,7 +110,7 @@ const init = () => {
   PaginationView.addEventHandlers(controllPagination, state);
   AddView.addHanlderUpload(controllAddNewRecipe);
 
-  state.bookmarks = BookmarkView.loadBookmarsFromLocalStorage();
+  BookmarkView.loadBookmarsFromLocalStorage();
 };
 
 init();

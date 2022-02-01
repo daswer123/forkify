@@ -49,7 +49,7 @@ class App {
         <div class="error">
           <div>
             <svg>
-              <use href="${imageURL}}#icon-alert-triangle"></use>
+              <use href="${imageURL.pathname}}#icon-alert-triangle"></use>
             </svg>
           </div>
           <p>${error}</p>
@@ -63,7 +63,7 @@ class App {
       <div class="error">
           <div>
             <svg>
-              <use href="${imageURL}}#icon-smile"></use>
+              <use href="${imageURL.pathname}}#icon-smile"></use>
             </svg>
           </div>
           <p>${this.successesMsg}</p>

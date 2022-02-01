@@ -1,4 +1,4 @@
-import { ITEM_PER_PAGE } from "../config";
+import { ITEM_PER_PAGE, imageURL } from "../config";
 
 class Pagination {
   constructor() {
@@ -41,7 +41,7 @@ class Pagination {
             ? ""
             : `<button class="btn--inline pagination__btn--prev">
             <svg class="search__icon">
-              <use href="img/icons.svg#icon-arrow-left"></use>
+              <use href="${imageURL.pathname}#icon-arrow-left"></use>
             </svg>
             <span>Page ${state.page}</span>
            </button>`
@@ -54,7 +54,7 @@ class Pagination {
         <button class="btn--inline pagination__btn--next">
             <span>Page ${state.page + 2}</span>
             <svg class="search__icon">
-              <use href="img/icons.svg#icon-arrow-right"></use>
+              <use href="${imageURL.pathname}#icon-arrow-right"></use>
             </svg>
           </button>
         `
