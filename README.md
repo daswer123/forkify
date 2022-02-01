@@ -1,3 +1,6 @@
+Live : https://competent-snyder-a297cc.netlify.app
+
+
 Things to implement:
 1) Add total page count to Pagination 🌑🌑🌑
 2) Add sorting by different data type 🌑🌑🌑🌑
