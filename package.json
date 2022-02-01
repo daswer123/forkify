@@ -25,6 +25,7 @@
   "browserslist": "> 0.25%, not dead",
   "dependencies": {
     "fractional": "^1.0.0",
+    "fracty": "^1.0.9",
     "parcel": "^2.2.1"
   },
   "devDependencies": {

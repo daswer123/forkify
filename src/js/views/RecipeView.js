@@ -1,4 +1,4 @@
-import { Fraction } from "fractional";
+import fracty from "fracty";
 import { API_KEY, imageURL } from "../config";
 import App from "./AppView";
 
@@ -19,7 +19,7 @@ class RecipeView extends App {
         <use href="${imageURL.pathname}#icon-check"></use>
       </svg>
       <div class="recipe__quantity">${
-        quantity ? new Fraction(+quantity, 2).toString() : ""
+        quantity ? fracty(+quantity, 2).toString() : ""
       }</div>
       <div class="recipe__description">
         <span class="recipe__unit">${unit}</span>
