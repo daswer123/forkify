@@ -7,6 +7,33 @@ class App {
     this.successesMsg = successesMsg;
   }
 
+  update(data) {
+    this.data = data;
+    const markup = this.generateMarkup();
+
+    const newDOM = document.createRange().createContextualFragment(markup);
+    const newElements = Array.from(newDOM.querySelectorAll("*"));
+    const currElements = Array.from(this.parentEl.querySelectorAll("*"));
+
+    newElements.forEach((newEl, i) => {
+      const curElem = currElements[i];
+      // console.log(newEl, newEl.isEqualNode(curElem));
+
+      if (
+        !newEl.isEqualNode(curElem) &&
+        newEl.firstChild?.nodeValue.trim() !== ""
+      ) {
+        curElem.textContent = newEl.textContent;
+      }
+
+      if (!newEl.isEqualNode(curElem)) {
+        Array.from(newEl.attributes).forEach((attribute) => {
+          curElem.setAttribute(attribute.name, attribute.value);
+        });
+      }
+    });
+  }
+
   renderSpiner() {
     const markup = `
         <div class="spinner">
@@ -32,7 +59,19 @@ class App {
               `;
   }
 
-  renderSuccesses() {}
+  renderSuccesses() {
+    this.parentEl.innerHTML = ``;
+    this.parentEl.innerHTML = `
+      <div class="error">
+          <div>
+            <svg>
+              <use href="${imageURL}}#icon-smile"></use>
+            </svg>
+          </div>
+          <p>${this.successesMsg}</p>
+        </div>
+`;
+  }
 }
 
 export default App;

@@ -1,5 +1,5 @@
 import { Fraction } from "fractional";
-import { imageURL } from "../config";
+import { API_KEY, imageURL } from "../config";
 import App from "./AppView";
 
 class RecipeView extends App {
@@ -29,7 +29,7 @@ class RecipeView extends App {
       ""
     );
   }
-  _generateMarkup() {
+  generateMarkup() {
     return `
     <figure class="recipe__fig">
     <img src="${this.data.image_url}" alt="${
@@ -60,12 +60,16 @@ class RecipeView extends App {
       <span class="recipe__info-text">servings</span>
 
       <div class="recipe__info-buttons">
-        <button class="btn--tiny btn--increase-servings">
+        <button class="btn--tiny btn--update-servings" data-update-to = ${
+          this.data.servings - 1
+        }>
           <svg>
             <use href="${imageURL.pathname}#icon-minus-circle"></use>
           </svg>
         </button>
-        <button class="btn--tiny btn--increase-servings">
+        <button class="btn--tiny btn--update-servings" data-update-to = ${
+          this.data.servings + 1
+        }>
           <svg>
             <use href="${imageURL.pathname}#icon-plus-circle"></use>
           </svg>
@@ -73,14 +77,23 @@ class RecipeView extends App {
       </div>
     </div>
 
-    <div class="recipe__user-generated">
-      <svg>
-        <use href="${imageURL.pathname}#icon-user"></use>
-      </svg>
-    </div>
+    ${
+      this.data.key === API_KEY
+        ? `
+      <div class="recipe__user-generated">
+        <svg>
+          <use href="${imageURL.pathname}#icon-user"></use>
+        </svg>
+      </div>
+      `
+        : ""
+    }
+    
     <button class="btn--round">
       <svg class="">
-        <use href="${imageURL.pathname}#icon-bookmark-fill"></use>
+        <use href="${imageURL.pathname}#icon-bookmark${
+      this.data.bookmarked ? "-fill" : ""
+    }"></use>
       </svg>
     </button>
     </div>
@@ -118,7 +131,29 @@ class RecipeView extends App {
   render(data) {
     this.data = data;
     this.parentEl.innerHTML = ``;
-    this.parentEl.insertAdjacentHTML("beforeend", this._generateMarkup());
+    this.parentEl.insertAdjacentHTML("beforeend", this.generateMarkup());
+  }
+
+  addEventHandlerSevings(controlFunc) {
+    this.parentEl.addEventListener("click", (e) => {
+      const btn = e.target.closest(".btn--update-servings");
+
+      if (!btn) return;
+
+      console.log(btn);
+      const { updateTo } = btn.dataset;
+      // state.recipe.servings = this.data.servings++;
+      if (+updateTo === 0) return;
+      controlFunc(+updateTo);
+    });
+  }
+
+  addBookmarkHandler(controlFunc) {
+    this.parentEl.addEventListener("click", (e) => {
+      const btn = e.target.closest(".btn--round");
+      if (!btn) return;
+      controlFunc();
+    });
   }
 
   addEventHandler(controlFunc) {
