@@ -6,19 +6,17 @@ class App {
     this.errorMsg = errorMsg;
     this.successesMsg = successesMsg;
   }
-
+  // Virtual DOM , создаем DOM на основе верстки, берем текущий дом Элемента, сравниваем на отличия и изменяем класс и текст
   update(data) {
     this.data = data;
     const markup = this.generateMarkup();
 
-    const newDOM = document.createRange().createContextualFragment(markup);
+    const newDOM = document.createRange().createContextualFragment(markup); // DOM на основе сгенерированой верстки
     const newElements = Array.from(newDOM.querySelectorAll("*"));
     const currElements = Array.from(this.parentEl.querySelectorAll("*"));
 
     newElements.forEach((newEl, i) => {
       const curElem = currElements[i];
-      // console.log(newEl, newEl.isEqualNode(curElem));
-
       if (
         !newEl.isEqualNode(curElem) &&
         newEl.firstChild?.nodeValue.trim() !== ""

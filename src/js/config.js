@@ -5,7 +5,7 @@ const API_KEY = "daed302b-f036-411b-9618-d5e212f17989";
 const TIMEOUTSEC = 10;
 const ITEM_PER_PAGE = 15;
 
-const imageURL = new URL("../img/icons.svg", import.meta.url);
+const imageURL = new URL("../img/icons.svg", import.meta.url); // Путь до icons.svg, нужно для Parcel
 
 export {
   API_KEY,
